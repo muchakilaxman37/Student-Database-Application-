@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Database</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>Student Management System</h1>
+
+<a href="/add">Add Student</a>
+
+<table>
+<tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Course</th>
+    <th>Actions</th>
+</tr>
+
+<!-- htmlhint disable spec-char-escape -->
+<% students.forEach(student => { %>
+<tr>
+    <td><%= student.name %></td>
+    <td><%= student.age %></td>
+    <td><%= student.course %></td>
+
+    <td>
+        <a href="/edit/<%= student._id %>">Edit</a>
+
+        <form action="/delete/<%= student._id %>?_method=DELETE"
+              method="POST"
+              style="display:inline">
+            <button type="submit">Delete</button>
+        </form>
+    </td>
+</tr>
+<% }); %>
+<!-- htmlhint enable spec-char-escape -->
+
+</table>
+
+</body>
+</html>
